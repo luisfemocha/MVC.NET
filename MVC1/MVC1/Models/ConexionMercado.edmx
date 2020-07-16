@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MercadoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="empleado">
+          <Key>
+            <PropertyRef Name="idE" />
+          </Key>
+          <Property Name="idE" Type="int" Nullable="false" />
+          <Property Name="nomE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="salud" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sedeE" Type="int" />
+        </EntityType>
+        <EntityType Name="producto">
+          <Key>
+            <PropertyRef Name="idP" />
+          </Key>
+          <Property Name="idP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="precio" Type="int" Nullable="false" />
+          <Property Name="sedeP" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sede">
+          <Key>
+            <PropertyRef Name="idS" />
+          </Key>
+          <Property Name="idS" Type="int" Nullable="false" />
+          <Property Name="nomS" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dir" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="telS" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK1">
+          <End Role="sede" Type="Self.sede" Multiplicity="0..1" />
+          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sede">
+              <PropertyRef Name="idS" />
+            </Principal>
+            <Dependent Role="empleado">
+              <PropertyRef Name="sedeE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2">
+          <End Role="sede" Type="Self.sede" Multiplicity="1" />
+          <End Role="producto" Type="Self.producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sede">
+              <PropertyRef Name="idS" />
+            </Principal>
+            <Dependent Role="producto">
+              <PropertyRef Name="sedeP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MercadoModelStoreContainer">
+          <EntitySet Name="empleado" EntityType="Self.empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="producto" EntityType="Self.producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sede" EntityType="Self.sede" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK1" Association="Self.FK1">
+            <End Role="sede" EntitySet="sede" />
+            <End Role="empleado" EntitySet="empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK2" Association="Self.FK2">
+            <End Role="sede" EntitySet="sede" />
+            <End Role="producto" EntitySet="producto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MercadoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="empleado">
+          <Key>
+            <PropertyRef Name="idE" />
+          </Key>
+          <Property Name="idE" Type="Int32" Nullable="false" />
+          <Property Name="nomE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="salud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sedeE" Type="Int32" />
+          <NavigationProperty Name="sede" Relationship="Self.FK1" FromRole="empleado" ToRole="sede" />
+        </EntityType>
+        <EntityType Name="producto">
+          <Key>
+            <PropertyRef Name="idP" />
+          </Key>
+          <Property Name="idP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio" Type="Int32" Nullable="false" />
+          <Property Name="sedeP" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sede" Relationship="Self.FK2" FromRole="producto" ToRole="sede" />
+        </EntityType>
+        <EntityType Name="sede">
+          <Key>
+            <PropertyRef Name="idS" />
+          </Key>
+          <Property Name="idS" Type="Int32" Nullable="false" />
+          <Property Name="nomS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dir" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="empleado" Relationship="Self.FK1" FromRole="sede" ToRole="empleado" />
+          <NavigationProperty Name="producto" Relationship="Self.FK2" FromRole="sede" ToRole="producto" />
+        </EntityType>
+        <Association Name="FK1">
+          <End Role="sede" Type="Self.sede" Multiplicity="0..1" />
+          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sede">
+              <PropertyRef Name="idS" />
+            </Principal>
+            <Dependent Role="empleado">
+              <PropertyRef Name="sedeE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2">
+          <End Role="sede" Type="Self.sede" Multiplicity="1" />
+          <End Role="producto" Type="Self.producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sede">
+              <PropertyRef Name="idS" />
+            </Principal>
+            <Dependent Role="producto">
+              <PropertyRef Name="sedeP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MercadoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="empleado" EntityType="Self.empleado" />
+          <EntitySet Name="producto" EntityType="Self.producto" />
+          <EntitySet Name="sede" EntityType="Self.sede" />
+          <AssociationSet Name="FK1" Association="Self.FK1">
+            <End Role="sede" EntitySet="sede" />
+            <End Role="empleado" EntitySet="empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK2" Association="Self.FK2">
+            <End Role="sede" EntitySet="sede" />
+            <End Role="producto" EntitySet="producto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MercadoModelStoreContainer" CdmEntityContainer="MercadoEntities">
+          <EntitySetMapping Name="empleado">
+            <EntityTypeMapping TypeName="MercadoModel.empleado">
+              <MappingFragment StoreEntitySet="empleado">
+                <ScalarProperty Name="idE" ColumnName="idE" />
+                <ScalarProperty Name="nomE" ColumnName="nomE" />
+                <ScalarProperty Name="telE" ColumnName="telE" />
+                <ScalarProperty Name="salud" ColumnName="salud" />
+                <ScalarProperty Name="sedeE" ColumnName="sedeE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="producto">
+            <EntityTypeMapping TypeName="MercadoModel.producto">
+              <MappingFragment StoreEntitySet="producto">
+                <ScalarProperty Name="idP" ColumnName="idP" />
+                <ScalarProperty Name="nomP" ColumnName="nomP" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="sedeP" ColumnName="sedeP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sede">
+            <EntityTypeMapping TypeName="MercadoModel.sede">
+              <MappingFragment StoreEntitySet="sede">
+                <ScalarProperty Name="idS" ColumnName="idS" />
+                <ScalarProperty Name="nomS" ColumnName="nomS" />
+                <ScalarProperty Name="dir" ColumnName="dir" />
+                <ScalarProperty Name="telS" ColumnName="telS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
