@@ -1,0 +1,42 @@
+﻿@model MVC1.Models.sede
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>sede</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nomS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dir)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idS }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

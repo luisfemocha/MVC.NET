@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MercadoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="empleado">
+    <Key>
+      <PropertyRef Name="idE" />
+    </Key>
+    <Property Name="idE" Type="Int32" Nullable="false" />
+    <Property Name="nomE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="salud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sedeE" Type="Int32" />
+    <NavigationProperty Name="sede" Relationship="Self.FK1" FromRole="empleado" ToRole="sede" />
+  </EntityType>
+  <EntityType Name="producto">
+    <Key>
+      <PropertyRef Name="idP" />
+    </Key>
+    <Property Name="idP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nomP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="precio" Type="Int32" Nullable="false" />
+    <Property Name="sedeP" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="sede" Relationship="Self.FK2" FromRole="producto" ToRole="sede" />
+  </EntityType>
+  <EntityType Name="sede">
+    <Key>
+      <PropertyRef Name="idS" />
+    </Key>
+    <Property Name="idS" Type="Int32" Nullable="false" />
+    <Property Name="nomS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dir" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="empleado" Relationship="Self.FK1" FromRole="sede" ToRole="empleado" />
+    <NavigationProperty Name="producto" Relationship="Self.FK2" FromRole="sede" ToRole="producto" />
+  </EntityType>
+  <Association Name="FK1">
+    <End Role="sede" Type="Self.sede" Multiplicity="0..1" />
+    <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sede">
+        <PropertyRef Name="idS" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="sedeE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2">
+    <End Role="sede" Type="Self.sede" Multiplicity="1" />
+    <End Role="producto" Type="Self.producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sede">
+        <PropertyRef Name="idS" />
+      </Principal>
+      <Dependent Role="producto">
+        <PropertyRef Name="sedeP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MercadoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="empleado" EntityType="Self.empleado" />
+    <EntitySet Name="producto" EntityType="Self.producto" />
+    <EntitySet Name="sede" EntityType="Self.sede" />
+    <AssociationSet Name="FK1" Association="Self.FK1">
+      <End Role="sede" EntitySet="sede" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK2" Association="Self.FK2">
+      <End Role="sede" EntitySet="sede" />
+      <End Role="producto" EntitySet="producto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,42 @@
+﻿@model MVC1.Models.producto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>producto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nomP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sede.nomS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sede.nomS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idP }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

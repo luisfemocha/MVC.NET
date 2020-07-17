@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MercadoModelStoreContainer" CdmEntityContainer="MercadoEntities">
+    <EntitySetMapping Name="empleado">
+      <EntityTypeMapping TypeName="MercadoModel.empleado">
+        <MappingFragment StoreEntitySet="empleado">
+          <ScalarProperty Name="idE" ColumnName="idE" />
+          <ScalarProperty Name="nomE" ColumnName="nomE" />
+          <ScalarProperty Name="telE" ColumnName="telE" />
+          <ScalarProperty Name="salud" ColumnName="salud" />
+          <ScalarProperty Name="sedeE" ColumnName="sedeE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto">
+      <EntityTypeMapping TypeName="MercadoModel.producto">
+        <MappingFragment StoreEntitySet="producto">
+          <ScalarProperty Name="idP" ColumnName="idP" />
+          <ScalarProperty Name="nomP" ColumnName="nomP" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="sedeP" ColumnName="sedeP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sede">
+      <EntityTypeMapping TypeName="MercadoModel.sede">
+        <MappingFragment StoreEntitySet="sede">
+          <ScalarProperty Name="idS" ColumnName="idS" />
+          <ScalarProperty Name="nomS" ColumnName="nomS" />
+          <ScalarProperty Name="dir" ColumnName="dir" />
+          <ScalarProperty Name="telS" ColumnName="telS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

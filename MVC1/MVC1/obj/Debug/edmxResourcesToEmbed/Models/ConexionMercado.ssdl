@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MercadoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="empleado">
+    <Key>
+      <PropertyRef Name="idE" />
+    </Key>
+    <Property Name="idE" Type="int" Nullable="false" />
+    <Property Name="nomE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="telE" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="salud" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="sedeE" Type="int" />
+  </EntityType>
+  <EntityType Name="producto">
+    <Key>
+      <PropertyRef Name="idP" />
+    </Key>
+    <Property Name="idP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="precio" Type="int" Nullable="false" />
+    <Property Name="sedeP" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sede">
+    <Key>
+      <PropertyRef Name="idS" />
+    </Key>
+    <Property Name="idS" Type="int" Nullable="false" />
+    <Property Name="nomS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dir" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="telS" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK1">
+    <End Role="sede" Type="Self.sede" Multiplicity="0..1" />
+    <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sede">
+        <PropertyRef Name="idS" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="sedeE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2">
+    <End Role="sede" Type="Self.sede" Multiplicity="1" />
+    <End Role="producto" Type="Self.producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sede">
+        <PropertyRef Name="idS" />
+      </Principal>
+      <Dependent Role="producto">
+        <PropertyRef Name="sedeP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MercadoModelStoreContainer">
+    <EntitySet Name="empleado" EntityType="Self.empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="producto" EntityType="Self.producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sede" EntityType="Self.sede" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK1" Association="Self.FK1">
+      <End Role="sede" EntitySet="sede" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK2" Association="Self.FK2">
+      <End Role="sede" EntitySet="sede" />
+      <End Role="producto" EntitySet="producto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -137,7 +137,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\empleadoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\productoesController.cs" />
+    <Compile Include="Controllers\sedesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -221,6 +224,21 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\empleadoes\Create.cshtml" />
+    <Content Include="Views\empleadoes\Delete.cshtml" />
+    <Content Include="Views\empleadoes\Details.cshtml" />
+    <Content Include="Views\empleadoes\Edit.cshtml" />
+    <Content Include="Views\empleadoes\Index.cshtml" />
+    <Content Include="Views\productoes\Create.cshtml" />
+    <Content Include="Views\productoes\Delete.cshtml" />
+    <Content Include="Views\productoes\Details.cshtml" />
+    <Content Include="Views\productoes\Edit.cshtml" />
+    <Content Include="Views\productoes\Index.cshtml" />
+    <Content Include="Views\sedes\Create.cshtml" />
+    <Content Include="Views\sedes\Delete.cshtml" />
+    <Content Include="Views\sedes\Details.cshtml" />
+    <Content Include="Views\sedes\Edit.cshtml" />
+    <Content Include="Views\sedes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
