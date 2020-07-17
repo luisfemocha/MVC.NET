@@ -4,16 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="09f769aa45b3430b8bf17f4be7a23932" Name="Diagram1">
+      <Diagram DiagramId="09f769aa45b3430b8bf17f4be7a23932" Name="Diagram1" ZoomLevel="150">
         <EntityTypeShape EntityType="MercadoModel.empleado" Width="1.5" PointX="3.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MercadoModel.producto" Width="1.5" PointX="3.5" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="MercadoModel.sede" Width="1.5" PointX="0.5" PointY="1.625" IsExpanded="true" />
         <AssociationConnector Association="MercadoModel.FK1" ManuallyRouted="false" ></AssociationConnector>
         <AssociationConnector Association="MercadoModel.FK2" ManuallyRouted="true" >
-          <ConnectorPoint PointX="2" PointY="3.4945695982975744" />
-          <ConnectorPoint PointX="3.12875" PointY="3.4945695982975744" />
-          <ConnectorPoint PointX="3.12875" PointY="3.495565584115472" />
-          <ConnectorPoint PointX="3.5" PointY="3.495565584115472" />
+          <ConnectorPoint PointX="2" PointY="3.4945695982975735" />
+          <ConnectorPoint PointX="2.2884722222222225" PointY="3.4945695982975731" />
+          <ConnectorPoint PointX="2.4551388888888894" PointY="3.4945695982975735" />
+          <ConnectorPoint PointX="2.75" PointY="3.4945695982975731" />
+          <ConnectorPoint PointX="2.916666666666667" PointY="3.4945695982975735" />
+          <ConnectorPoint PointX="3.2609722222222226" PointY="3.4945695982975735" />
+          <ConnectorPoint PointX="3.2609722222222226" PointY="4.178597376075353" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="4.178597376075353" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="3.1552878063376943" />
+          <ConnectorPoint PointX="2.3718055555555559" PointY="3.1552878063376943" />
+          <ConnectorPoint PointX="2.3718055555555559" PointY="3.8479961396710274" />
+          <ConnectorPoint PointX="2.75" PointY="3.8479961396710269" />
+          <ConnectorPoint PointX="2.916666666666667" PointY="3.8479961396710274" />
+          <ConnectorPoint PointX="3.1776388888888891" PointY="3.8479961396710269" />
+          <ConnectorPoint PointX="3.3443055555555561" PointY="3.8479961396710274" />
+          <ConnectorPoint PointX="3.3774875" PointY="3.8479961396710274" />
+          <ConnectorPoint PointX="3.3774875" PointY="3.4955655841154716" />
+          <ConnectorPoint PointX="3.5" PointY="3.4955655841154716" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
