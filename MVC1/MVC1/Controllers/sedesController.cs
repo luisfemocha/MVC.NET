@@ -8,36 +8,29 @@ using System.Web;
 using System.Web.Mvc;
 using MVC1.Models;
 
-namespace MVC1.Controllers
-{
-    public class sedesController : Controller
-    {
+namespace MVC1.Controllers{
+    public class sedesController : Controller{
         private MercadoEntities db = new MercadoEntities();
 
         // GET: sedes
-        public ActionResult Index()
-        {
+        public ActionResult Index(){
             return View(db.sede.ToList());
         }
 
         // GET: sedes/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Details(int? id){
+            if (id == null){
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             sede sede = db.sede.Find(id);
-            if (sede == null)
-            {
+            if (sede == null){
                 return HttpNotFound();
             }
             return View(sede);
         }
 
         // GET: sedes/Create
-        public ActionResult Create()
-        {
+        public ActionResult Create(){
             return View();
         }
 
@@ -46,10 +39,8 @@ namespace MVC1.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idS,nomS,dir,telS")] sede sede)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Create([Bind(Include = "idS,nomS,dir,telS")] sede sede){
+            if (ModelState.IsValid){
                 db.sede.Add(sede);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -59,15 +50,12 @@ namespace MVC1.Controllers
         }
 
         // GET: sedes/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Edit(int? id){
+            if (id == null){
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             sede sede = db.sede.Find(id);
-            if (sede == null)
-            {
+            if (sede == null){
                 return HttpNotFound();
             }
             return View(sede);
@@ -78,10 +66,8 @@ namespace MVC1.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idS,nomS,dir,telS")] sede sede)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Edit([Bind(Include = "idS,nomS,dir,telS")] sede sede){
+            if (ModelState.IsValid){
                 db.Entry(sede).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -90,15 +76,12 @@ namespace MVC1.Controllers
         }
 
         // GET: sedes/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Delete(int? id){
+            if (id == null){
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             sede sede = db.sede.Find(id);
-            if (sede == null)
-            {
+            if (sede == null){
                 return HttpNotFound();
             }
             return View(sede);
@@ -107,18 +90,15 @@ namespace MVC1.Controllers
         // POST: sedes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
+        public ActionResult DeleteConfirmed(int id){
             sede sede = db.sede.Find(id);
             db.sede.Remove(sede);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
+        protected override void Dispose(bool disposing){
+            if (disposing){
                 db.Dispose();
             }
             base.Dispose(disposing);

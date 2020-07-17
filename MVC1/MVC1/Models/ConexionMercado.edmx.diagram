@@ -5,11 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="09f769aa45b3430b8bf17f4be7a23932" Name="Diagram1">
-        <EntityTypeShape EntityType="MercadoModel.empleado" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MercadoModel.producto" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="MercadoModel.sede" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
-        <AssociationConnector Association="MercadoModel.FK1" ManuallyRouted="false" />
-        <AssociationConnector Association="MercadoModel.FK2" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MercadoModel.empleado" Width="1.5" PointX="3.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MercadoModel.producto" Width="1.5" PointX="3.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="MercadoModel.sede" Width="1.5" PointX="0.5" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="MercadoModel.FK1" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="MercadoModel.FK2" ManuallyRouted="true" >
+          <ConnectorPoint PointX="2" PointY="3.4945695982975744" />
+          <ConnectorPoint PointX="3.12875" PointY="3.4945695982975744" />
+          <ConnectorPoint PointX="3.12875" PointY="3.495565584115472" />
+          <ConnectorPoint PointX="3.5" PointY="3.495565584115472" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
